@@ -88,9 +88,13 @@ function backspace(operation) {
 
 var bracketOpened = false;
 function brackets(operation) {
+  const lastOperand = operation[operation.length - 1];
   if (bracketOpened) {
     bracketOpened = false;
     return operation + ")";
+  } else if (!isNaN(lastOperand) || lastOperand == ")") {
+    bracketOpened = true;
+    return operation + "*(";
   } else {
     bracketOpened = true;
     return operation + "(";
