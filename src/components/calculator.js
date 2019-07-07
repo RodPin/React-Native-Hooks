@@ -7,7 +7,9 @@ const Calculator = () => {
   //the second argument of useState, "setCount" is the function that will make changes on the variable declared before
 
   const CalcButton = ({ label, onPress }) => (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={onPress ? onPress : () => setOperation(operation + label)}
+    >
       <View style={styles.buttonView}>
         <Text style={styles.text}>{label}</Text>
       </View>
@@ -43,7 +45,10 @@ const Calculator = () => {
       </View>
 
       <View style={{ ...styles.row, marginTop: 10 }}>
-        <CalcButton label="=" />
+        <CalcButton
+          label="="
+          onPress={() => setOperation("= " + operate(operation))}
+        />
       </View>
     </View>
   );
@@ -54,6 +59,11 @@ const Board = ({ label }) => (
     <Text style={styles.text}>{label}</Text>
   </View>
 );
+
+function operate(operation) {
+  const answer = (+eval(operation)).toFixed(2);
+  return answer;
+}
 
 const styles = StyleSheet.create({
   container: {
