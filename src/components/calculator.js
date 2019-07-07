@@ -49,10 +49,15 @@ const Calculator = () => {
         <CalcButton label="7" />
         <CalcButton label="8" />
         <CalcButton label="9" />
-        <CalcButton label="0" />
+
+        <CalcButton
+          label="( )"
+          onPress={() => setOperation(brackets(operation))}
+        />
       </View>
 
-      <View style={{ ...styles.row, marginTop: 10 }}>
+      <View style={{ ...styles.row }}>
+        <CalcButton label="0" />
         <CalcButton
           label="="
           onPress={() => setOperation(operate(operation))}
@@ -78,6 +83,17 @@ function backspace(operation) {
       // remove last char
       return operation.substring(0, operation.length - 1);
     }
+  }
+}
+
+var bracketOpened = false;
+function brackets(operation) {
+  if (bracketOpened) {
+    bracketOpened = false;
+    return operation + ")";
+  } else {
+    bracketOpened = true;
+    return operation + "(";
   }
 }
 
