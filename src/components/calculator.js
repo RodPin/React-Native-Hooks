@@ -25,7 +25,7 @@ const Calculator = () => {
       <Text style={{ fontSize: 27 }}>Calculator:</Text>
       <Board label={operation} />
       <View style={styles.row}>
-        <CalcButton label="CE" onPress={() => setOperation("")} />
+        <CalcButton label="C" onPress={() => setOperation("")} />
         <CalcButton
           label="←"
           onPress={() => setOperation(backspace(operation))}
