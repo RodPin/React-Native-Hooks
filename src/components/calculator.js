@@ -3,11 +3,12 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 const Calculator = () => {
   const [operation, setOperation] = useState(``);
-  //useState(x) -> "x" is the initial "state" of the variable "count"
-  //the second argument of useState, "setCount" is the function that will make changes on the variable declared before
+  //useState('') -> '' is the initial "state" of the variable "operation"
+  //the second argument of useState, "setOperation" is the function that make changes on the variable declared before
 
   const CalcButton = ({ label, onPress }) => (
     <TouchableOpacity
+      //if onPress is not defined we just compute the number or the operation
       onPress={onPress ? onPress : () => setOperation(operation + label)}
     >
       <View style={styles.buttonView}>
