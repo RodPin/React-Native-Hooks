@@ -7,6 +7,7 @@ const Counter = () => {
   const [count, setCount] = useState(0);
   return (
     <View style={styles.container}>
+      <Text style={{ fontSize: 27 }}>Counter:</Text>
       <View style={{ flexDirection: "row" }}>
         <Button title="-" onPress={() => setCount(count - 1)} color="red" />
         <Text style={{ fontSize: 27 }}> {count} </Text>
@@ -18,7 +19,7 @@ const Counter = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.2,
     alignItems: "center",
     justifyContent: "center"
   }
