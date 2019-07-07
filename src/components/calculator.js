@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 const Calculator = () => {
   const [operation, setOperation] = useState(``);
@@ -47,7 +47,7 @@ const Calculator = () => {
       <View style={{ ...styles.row, marginTop: 10 }}>
         <CalcButton
           label="="
-          onPress={() => setOperation("= " + operate(operation))}
+          onPress={() => setOperation(operate(operation))}
         />
       </View>
     </View>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   board: {
     height: 50,
-    width: 250,
+    width: 200,
     alignItems: "center",
     borderColor: "#ccc",
     justifyContent: "center",
