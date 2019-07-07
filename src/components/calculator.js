@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
+//    HOW THE CALCULATOR WORKS:
+//      - We add all the operations and numbers to the same string
+//      - operate() function to calculate the result (it basically does the opposite of .toString())
+
 const Calculator = () => {
   const [operation, setOperation] = useState(``);
   //useState('') -> '' is the initial "state" of the variable "operation"
