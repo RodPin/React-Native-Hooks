@@ -6,9 +6,9 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 //      - operate() function to calculate the result (it basically does the opposite of .toString())
 
 const Calculator = () => {
-  const [operation, setOperation] = useState(``);
   //useState('') -> '' is the initial "state" of the variable "operation"
   //the second argument of useState, "setOperation" is the function that make changes on the variable declared before
+  const [operation, setOperation] = useState("");
 
   const CalcButton = ({ label, onPress }) => (
     <TouchableOpacity
@@ -26,7 +26,10 @@ const Calculator = () => {
       <Board label={operation} />
       <View style={styles.row}>
         <CalcButton label="CE" onPress={() => setOperation("")} />
-        <CalcButton label="C" />
+        <CalcButton
+          label="←"
+          onPress={() => setOperation(backspace(operation))}
+        />
         <CalcButton label="*" />
         <CalcButton label="/" />
       </View>
@@ -68,6 +71,14 @@ const Board = ({ label }) => (
 function operate(operation) {
   const answer = (+eval(operation)).toFixed(2);
   return answer;
+}
+function backspace(operation) {
+  if (operation) {
+    if (operation.length > 0) {
+      // remove last char
+      return operation.substring(0, operation.length - 1);
+    }
+  }
 }
 
 const styles = StyleSheet.create({
