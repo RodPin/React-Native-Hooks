@@ -10,13 +10,15 @@ const Calculator = () => {
   //the second argument of useState, "setOperation" is the function that make changes on the variable declared before
   const [operation, setOperation] = useState("");
 
-  const CalcButton = ({ label, onPress }) => (
+  const CalcButton = ({ label, onPress, bgColor }) => (
     <TouchableOpacity
       //if onPress is not defined we just compute the number or the operation
       onPress={onPress ? onPress : () => setOperation(operation + label)}
     >
-      <View style={styles.buttonView}>
-        <Text style={styles.text}>{label}</Text>
+      <View style={{ ...styles.buttonView, backgroundColor: bgColor }}>
+        <Text style={{ ...styles.text, color: bgColor ? "white" : null }}>
+          {label}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -65,6 +67,7 @@ const Calculator = () => {
         <CalcButton label="." />
         <CalcButton
           label="="
+          bgColor="#00ace6"
           onPress={() => setOperation(operate(operation))}
         />
       </View>
