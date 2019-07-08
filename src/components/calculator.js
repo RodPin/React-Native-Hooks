@@ -57,7 +57,10 @@ const Calculator = () => {
       </View>
 
       <View style={{ ...styles.row }}>
-        <CalcButton label="+/-" />
+        <CalcButton
+          label="+/-"
+          onPress={() => setOperation(-operate(operation))}
+        />
         <CalcButton label="0" />
         <CalcButton label="." />
         <CalcButton
