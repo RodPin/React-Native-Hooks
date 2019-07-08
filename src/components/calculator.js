@@ -79,6 +79,10 @@ const Board = ({ label }) => (
 );
 
 function operate(operation) {
+  const lastOperand = operation[operation.length - 1];
+  if (isNaN(lastOperand)) {
+    operation = backspace(operation);
+  }
   const answer = (+eval(operation)).toFixed(2);
   return answer;
 }
