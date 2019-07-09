@@ -27,7 +27,11 @@ const Calculator = () => {
       <Text style={{ fontSize: 27 }}>Calculator:</Text>
       <Board label={operation} />
       <View style={styles.row}>
-        <CalcButton label="C" onPress={() => setOperation("")} />
+        <CalcButton
+          label="C"
+          onPress={() => setOperation("")}
+          bgColor="#ff3333"
+        />
         <CalcButton
           label="←"
           onPress={() => setOperation(backspace(operation))}
