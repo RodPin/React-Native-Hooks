@@ -15,8 +15,13 @@ const Calculator = () => {
       //if onPress is not defined we just compute the number or the operation
       onPress={onPress ? onPress : () => setOperation(operation + label)}
     >
-      <View style={{ ...styles.buttonView, backgroundColor: bgColor }}>
-        <Text style={{ ...styles.text, color: bgColor ? "white" : null }}>
+      <View
+        style={{
+          ...styles.buttonView,
+          backgroundColor: bgColor ? bgColor : "white"
+        }}
+      >
+        <Text style={{ ...styles.text, color: bgColor ? "white" : "null" }}>
           {label}
         </Text>
       </View>
@@ -25,55 +30,59 @@ const Calculator = () => {
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 27 }}>Calculator:</Text>
-      <Board label={operation} />
-      <View style={styles.row}>
-        <CalcButton
-          label="C"
-          onPress={() => setOperation("")}
-          bgColor="#ff3333"
-        />
-        <CalcButton
-          label="←"
-          onPress={() => setOperation(backspace(operation))}
-        />
-        <CalcButton label="*" />
-        <CalcButton label="/" />
-      </View>
-      <View style={styles.row}>
-        <CalcButton label="1" />
-        <CalcButton label="2" />
-        <CalcButton label="3" />
-        <CalcButton label="+" />
-      </View>
-      <View style={styles.row}>
-        <CalcButton label="4" />
-        <CalcButton label="5" />
-        <CalcButton label="6" />
-        <CalcButton label="-" />
-      </View>
-      <View style={styles.row}>
-        <CalcButton label="7" />
-        <CalcButton label="8" />
-        <CalcButton label="9" />
+      <View
+        style={{ padding: 10, backgroundColor: "#4B504B", borderRadius: 5 }}
+      >
+        <Board label={operation} />
+        <View style={styles.row}>
+          <CalcButton
+            label="C"
+            onPress={() => setOperation("")}
+            bgColor="#ff3333"
+          />
+          <CalcButton
+            label="←"
+            onPress={() => setOperation(backspace(operation))}
+          />
+          <CalcButton label="*" />
+          <CalcButton label="/" />
+        </View>
+        <View style={styles.row}>
+          <CalcButton label="1" />
+          <CalcButton label="2" />
+          <CalcButton label="3" />
+          <CalcButton label="+" />
+        </View>
+        <View style={styles.row}>
+          <CalcButton label="4" />
+          <CalcButton label="5" />
+          <CalcButton label="6" />
+          <CalcButton label="-" />
+        </View>
+        <View style={styles.row}>
+          <CalcButton label="7" />
+          <CalcButton label="8" />
+          <CalcButton label="9" />
 
-        <CalcButton
-          label="( )"
-          onPress={() => setOperation(brackets(operation))}
-        />
-      </View>
+          <CalcButton
+            label="( )"
+            onPress={() => setOperation(brackets(operation))}
+          />
+        </View>
 
-      <View style={{ ...styles.row }}>
-        <CalcButton
-          label="+/-"
-          onPress={() => setOperation(-operate(operation))}
-        />
-        <CalcButton label="0" />
-        <CalcButton label="." />
-        <CalcButton
-          label="="
-          bgColor="#00ace6"
-          onPress={() => setOperation(operate(operation))}
-        />
+        <View style={{ ...styles.row }}>
+          <CalcButton
+            label="+/-"
+            onPress={() => setOperation(-operate(operation))}
+          />
+          <CalcButton label="0" />
+          <CalcButton label="." />
+          <CalcButton
+            label="="
+            bgColor="#00ace6"
+            onPress={() => setOperation(operate(operation))}
+          />
+        </View>
       </View>
     </View>
   );
@@ -144,7 +153,8 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     justifyContent: "center",
     borderWidth: 0.8,
-    marginBottom: 10
+    marginBottom: 10,
+    backgroundColor: "white"
   },
   row: {
     flexDirection: "row"
